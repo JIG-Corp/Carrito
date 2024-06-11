@@ -23,6 +23,13 @@ import {
   ApexResponsive,
   NgApexchartsModule,
 } from 'ng-apexcharts';
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {FormsModule} from "@angular/forms";
+import {MatCheckbox} from "@angular/material/checkbox";
+import {MatInput} from "@angular/material/input";
+import {RouterLink} from "@angular/router";
+import {MatTooltip} from "@angular/material/tooltip";
 
 interface month {
   value: string;
@@ -138,16 +145,25 @@ const ELEMENT_DATA: productsData[] = [
   templateUrl: './dashboard.component.html',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    TablerIconsModule,
-    MatCardModule,
-    NgApexchartsModule,
-    MatTableModule,
-    CommonModule,
-  ],
+    imports: [
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        TablerIconsModule,
+        MatCardModule,
+        NgApexchartsModule,
+        MatTableModule,
+        CommonModule,
+        MatFormField,
+        MatSelect,
+        MatOption,
+        FormsModule,
+        MatCheckbox,
+        MatInput,
+        MatLabel,
+        RouterLink,
+        MatTooltip,
+    ],
 })
 export class AppDashboardComponent {
   @ViewChild('chart') chart: ChartComponent = Object.create(null);

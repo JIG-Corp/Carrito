@@ -19,6 +19,11 @@
   box-shadow: $cardshadow !important;
 }
 
+.cardColumn {
+  display: flex;
+  flex-direction: column;
+}
+
 .mat-mdc-card-title {
   line-height: 1.6rem;
 }

@@ -38,6 +38,11 @@ export const navItems: NavItem[] = [
     route: '/ui-components/tooltips',
   },
   {
+    displayName: 'Registrar Producto',
+    iconName: 'check',
+    route: '/ui-components/registry',
+  },
+  {
     navCap: 'Auth',
   },
   {
