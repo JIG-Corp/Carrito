@@ -29,6 +29,5 @@ import {CurrencyPipe} from "@angular/common";
   templateUrl: './register-prod.component.html',
   styleUrl: './register-prod.component.scss'
 })
-export class RegisterProdComponent {
-    testPrice: number = 0;
-}
+export class RegisterProdComponent {}
+
