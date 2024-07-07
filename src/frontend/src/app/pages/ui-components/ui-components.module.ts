@@ -20,6 +20,7 @@ import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { RegisterProdComponent} from "./register-prod/register-prod.component";
 import { MatNativeDateModule } from '@angular/material/core';
 import { InventarioComponent } from './inventario/inventario.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { InventarioComponent } from './inventario/inventario.component';
     TablerIconsModule.pick(TablerIcons),
     MatNativeDateModule,
     RegisterProdComponent,
+    MatCheckboxModule
   ],
   declarations: [
     AppBadgeComponent,

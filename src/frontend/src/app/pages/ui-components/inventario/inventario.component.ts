@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
+import { UploadDialogComponent } from './upload-dialog.component'; // Import your custom upload dialog component if created
 
 export interface Section {
-  id: Number;
-  name: string;
-  description: string;
+  nombre: string;
+  descripcion: string;
   updated: Date;
-  class: string;
-  cost: Number;
-  cant: Number;
+  categoria: string;
+  precio: number; // Corrected type from Number to number
+  cantidad: number; // Corrected type from Number to number
+  selected: boolean;
 }
 
 @Component({
@@ -15,37 +18,60 @@ export interface Section {
   templateUrl: './inventario.component.html',
 })
 export class InventarioComponent {
-  constructor() {}
 
-  typesOfShoes: string[] = ['Loafers', 'Sneakers'];
+  dataSource: Section[] = [];
 
-  folders: Section[] = [
-    {
-      id: 0,
-      name: 'Photos',
-      description: 'hola',
-      updated: new Date('1/1/16'),
-      class: "comida",
-      cost: 23,
-      cant: 23,
-    },
-    {
-      id: 0,
-      name: 'Recipes',
-      description: 'hola',
-      updated: new Date('1/17/16'),
-      class: "comida",
-      cost: 23,
-      cant: 23,
-    },
-    {
-      id: 0,
-      name: 'Work',
-      description: 'hola',
-      updated: new Date('1/28/16'),
-      class: "comida",
-      cost: 23,
-      cant: 23,
-    },
-  ];
+  constructor(private http: HttpClient, private dialog: MatDialog) {} // Inject MatDialog here
+
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    this.http.get<any[]>('http://localhost:8000/api/core/get/list/Producto/')
+      .subscribe(
+        (data) => {
+          this.dataSource = data;
+        },
+        (error) => {
+          console.error('Error fetching products:', error);
+          // Handle error if needed
+        }
+      );
+  }
+
+  toggleSelection(folder: Section): void {
+    folder.selected = !folder.selected;
+  }
+
+  hasSelectedItems(): boolean {
+    return this.dataSource.some(folder => folder.selected);
+  }
+
+  deleteSelected(): void {
+    this.dataSource = this.dataSource.filter(folder => !folder.selected);
+    // Implement delete logic here or call a service method to delete from API
+  }
+
+  editFolder(folder: Section): void {
+    console.log('Editing folder:', folder);
+    // Implement your edit functionality here
+  }
+
+  openUploadDialog(): void {
+    const dialogRef = this.dialog.open(UploadDialogComponent, {
+      width: '400px',
+      // Add any other dialog configuration options here
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle dialog close if needed
+      if (result) {
+        // If upload was successful or any specific action needed after upload
+        console.log('File uploaded successfully:', result);
+        // Example: You might want to refresh the product list after upload
+        this.getProducts();
+      }
+    });
+  }
 }

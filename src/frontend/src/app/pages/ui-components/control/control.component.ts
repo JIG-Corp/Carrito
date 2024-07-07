@@ -1,59 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 export interface Section {
-  name: string;
-  description: string;
+  nombre: string;
+  descripcion: string;
   updated: Date;
-  class: string;
-  cost: Number;
+  categoria: string;
+  precio: Number;
+  cantidad: Number;
+  selected: boolean
 }
 
 @Component({
   selector: 'app-lists',
   templateUrl: './control.component.html',
 })
-export class ControlComponent {
-  constructor() {}
+export class ControlComponent implements OnInit {
+  dataSource: Section[] = [];
 
-  typesOfShoes: string[] = ['Loafers', 'Sneakers'];
+  constructor(private http: HttpClient) {}
 
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      description: 'hola',
-      updated: new Date('1/1/16'),
-      class: "comida",
-      cost: 23,
-    },
-    {
-      name: 'Recipes',
-      description: 'hola',
-      updated: new Date('1/17/16'),
-      class: "comida",
-      cost: 23,
-    },
-    {
-      name: 'Work',
-      description: 'hola',
-      updated: new Date('1/28/16'),
-      class: "comida",
-      cost: 23,
-    },
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      description: 'hola',
-      updated: new Date('2/20/16'),
-      class: "comida",
-      cost: 23,
-    },
-    {
-      name: 'Kitchen Remodel',
-      description: 'hola',
-      updated: new Date('1/18/16'),
-      class: "comida",
-      cost: 23,
-    },
-  ];
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    this.http.get<any[]>('http://localhost:8000/api/core/get/list/Producto/')
+      .subscribe(
+        (data) => {
+          this.dataSource = data;
+        },
+        (error) => {
+          console.error('Error fetching products:', error);
+          // Handle error if needed
+        }
+      );
+  }
+
+  toggleSelection(folder: Section): void {
+    folder.selected = !folder.selected;
+  }
+
+  hasSelectedItems(): boolean {
+    return this.dataSource.some(folder => folder.selected);
+  }
+
+  deleteSelected(): void {
+    this.dataSource = this.dataSource.filter(folder => !folder.selected);
+    // Implement delete logic here or call a service method to delete from API
+  }
+
+  editFolder(folder: Section): void {
+    console.log('Editing folder:', folder);
+    // Implement your edit functionality here
+  }
 }
