@@ -44,6 +44,7 @@ export class RegisterProdComponent {
         "descripcion",
         "categoria",
         "precio",
+        "fecha",
         "edit",
     ];
     dataSource: any[];
@@ -139,7 +140,8 @@ export class RegisterProdComponent {
               nombre: nombreInput.value,
               descripcion: descripcionInput.value,
               categoria: categoriaInput.value,
-              precio : precioInput.value
+              precio : precioInput.value,
+              fecha : new Date().toISOString()
             })
           }
         );

@@ -7,5 +7,6 @@ class ProductoSerializer(serializers.Serializer):
     descripcion=serializers.CharField()
     categoria = serializers.CharField()
     precio = serializers.FloatField()
+    fecha = serializers.DateField()
     class Meta:
         model = Producto

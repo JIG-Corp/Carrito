@@ -27,6 +27,7 @@ def guardar_producto(kwargs):
         p.descripcion = kwargs.get('descripcion') if 'descripcion' in kwargs else None
         p.categoria = kwargs.get('categoria') if 'categoria' in kwargs else None
         p.precio = kwargs.get('precio') if 'precio' in kwargs else None
+        p.fecha = kwargs.get('fecha') if 'fecha' in kwargs else None
         p.save()
         return True
     else:
@@ -37,9 +38,10 @@ def modificar_producto(datos):
     if 'identificador' in datos and datos.get('identificador') != "" and type(datos.get('identificador')) == str:
         p = Producto.objects.get(id=int(datos.get('identificador')))
         p.nombre = datos.get('nombre') if 'nombre' in datos else None
-        p.f_nacimiento = datos.get('f_nacimiento') if 'f_nacimiento' in datos else None
-        p.ciudad = datos.get('ciudad') if 'ciudad' in datos else None
-        p.avatar = datos.get('avatar') if 'avatar' in datos else None
+        p.descripcion = kwargs.get('descripcion') if 'descripcion' in kwargs else None
+        p.categoria = kwargs.get('categoria') if 'categoria' in kwargs else None
+        p.precio = kwargs.get('precio') if 'precio' in kwargs else None
+        p.fecha = kwargs.get('fecha') if 'fecha' in kwargs else None
         p.save()
         return True
     else:

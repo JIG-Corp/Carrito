@@ -25,4 +25,9 @@ class Migration(migrations.Migration):
             name='precio',
             field=models.FloatField(blank=True, max_length=50),
         ),
+        migrations.AddField(
+            model_name='producto',
+            name='fecha',
+            field=models.CharField(blank=True, max_length=50),
+        ),
     ]

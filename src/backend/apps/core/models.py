@@ -6,3 +6,4 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=50)
     categoria = models.CharField(max_length=50)
     precio = models.CharField(max_length=50)
+    fecha = models.CharField(max_length=50)
