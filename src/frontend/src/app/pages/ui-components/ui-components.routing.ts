@@ -6,7 +6,9 @@ import { AppChipsComponent } from './chips/chips.component';
 import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
-import {RegisterProdComponent} from "./register-prod/register-prod.component";
+import { RegisterProdComponent } from "./register-prod/register-prod.component";
+import { ControlComponent } from './control/control.component';
+import { InventarioComponent } from './inventario/inventario.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -23,6 +25,14 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'lists',
         component: AppListsComponent,
+      },
+      {
+        path: 'inventario',
+        component: InventarioComponent,
+      },
+      {
+        path: 'control',
+        component: ControlComponent,
       },
       {
         path: 'menu',

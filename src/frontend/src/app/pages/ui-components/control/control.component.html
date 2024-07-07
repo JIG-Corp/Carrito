@@ -1,0 +1,109 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Lists</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="row">
+    
+      <div class="col-lg-6">
+        <!-- --------------------------------------------------- -->
+        <!-- List with Selection -->
+        <!-- --------------------------------------------------- -->
+        <mat-card class="b-1 shadow-none">
+          <mat-card-header>
+            <mat-card-title>List with Selection</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="b-t-1">
+            <mat-selection-list #shoes>
+              <mat-list-option *ngFor="let shoe of typesOfShoes">
+                {{ shoe }}
+              </mat-list-option>
+            </mat-selection-list>
+
+            <p class="mat-subtitle-2 f-w-600 p-16 bg-light-primary rounded">
+              Options selected: {{ shoes.selectedOptions.selected.length }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-lg-6">
+        <!-- --------------------------------------------------- -->
+        <!-- List with single Selection -->
+        <!-- --------------------------------------------------- -->
+        <mat-card class="b-1 shadow-none">
+          <mat-card-header>
+            <mat-card-title>List with single Selection</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="b-t-1">
+            <mat-selection-list #shoes2 [multiple]="false">
+              <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
+                {{ shoe }}
+              </mat-list-option>
+            </mat-selection-list>
+
+            <p class="mat-subtitle-2 f-w-600 p-16 bg-light-primary rounded">
+              Option selected:
+              {{
+                shoes2.selectedOptions.hasValue()
+                  ? shoes2.selectedOptions.selected[0].value
+                  : "None"
+              }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-12">
+        <!-- --------------------------------------------------- -->
+        <!-- List with sections -->
+        <!-- --------------------------------------------------- -->
+        <mat-card class="b-1 shadow-none">
+          <mat-card-header>
+            <mat-card-title>List with sections</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="b-t-1">
+            <mat-list class="custom-list">
+              <div mat-subheader class="mat-body-2 m-b-16 f-w-600">Folders</div>
+              <mat-list-item *ngFor="let folder of folders" class="custom-list-item">
+                <div class="mat-list-item-content">
+                  <mat-icon matListItemIcon>folder</mat-icon>
+                  <div matListItemTitle class="mat-body-2 f-w-600">{{ folder.name }}</div>
+                  <div matListItemLine class="f-s-14 mat-body-1">{{ folder.updated | date }}</div>
+                  <div matListItemLine class="f-s-14 mat-body-1">{{ folder.description }}</div>
+                  <div matListItemLine class="f-s-14 mat-body-1">{{ folder.class }}</div>
+                  <div matListItemLine class="f-s-14 mat-body-1">{{ folder.cost }}</div>
+                </div>
+              </mat-list-item>            
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<style>
+.custom-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adjust the spacing between items */
+}
+
+.custom-list-item {
+  padding: 16px; /* Optional: Add padding to each list item for spacing */
+}
+
+.mat-list-item-content {
+  display: flex;
+  align-items: center; /* Vertical alignment of items */
+}
+
+.mat-list-item-content mat-icon {
+  margin-right: 16px; /* Adjust spacing between icon and text */
+}
+
+.mat-list-item-content > *:not(mat-icon) {
+  flex: 1; /* Allow text content to take remaining space */
+}
+</style>
