@@ -8,6 +8,9 @@
         <mat-card class="b-1 shadow-none">
           <mat-card-content class="b-t-1">
             <button mat-flat-button color="warn" [disabled]="!hasSelectedItems()" (click)="deleteSelected()">Borrar seleccionados</button>
+            <button mat-flat-button color="primary" matTooltip="Subir archivo CSV" (click)="openUploadDialog()">
+              CSV
+            </button>
             <mat-list class="custom-list">
               <mat-list-item *ngFor="let folder of dataSource" class="custom-list-item">
                 <div class="mat-list-item-content">

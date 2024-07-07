@@ -13,11 +13,8 @@ export class UploadDialogComponent {
     // Handle file selection logic here (e.g., upload file to server)
     const file: File = event.target.files[0];
     console.log('Archivo seleccionado:', file);
-    // Example: You might want to upload the file using HttpClient
-    // Add your upload logic here based on your backend API requirements
-    // You can call an API endpoint to handle the file upload
+    // super codigo que no implemente
 
-    // Close the dialog and pass any result if needed
     this.dialogRef.close('Archivo subido correctamente');
   }
 

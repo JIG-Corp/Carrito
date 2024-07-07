@@ -7,22 +7,15 @@
       <div class="col-12">
         <mat-card class="b-1 shadow-none">
           <mat-card-content class="b-t-1">
-            <button mat-flat-button color="warn" [disabled]="!hasSelectedItems()" (click)="deleteSelected()">Borrar seleccionados</button>
-            <button mat-flat-button color="primary" matTooltip="Subir archivo CSV" (click)="openUploadDialog()">
-              CSV
-            </button>
             <mat-list class="custom-list">
               <mat-list-item *ngFor="let folder of dataSource" class="custom-list-item">
                 <div class="mat-list-item-content">
-                  <mat-checkbox [checked]="folder.selected" (change)="toggleSelection(folder)"></mat-checkbox>
                   <div matListItemLine class="f-s-14 mat-body-1">{{ folder.nombre }}</div>
                   <div matListItemLine class="f-s-14 mat-body-1">{{ folder.updated | date }}</div>
                   <div matListItemLine class="f-s-14 mat-body-1">{{ folder.descripcion }}</div>
                   <div matListItemLine class="f-s-14 mat-body-1">{{ folder.categoria }}</div>
                   <div matListItemLine class="f-s-14 mat-body-1">{{ folder.precio }}</div>
                   <div matListItemLine class="f-s-14 mat-body-1">{{ folder.cantidad }}</div>
-                  <button mat-flat-button class="f-s-14 mat-body-1" color="primary" matTooltip="Edit" (click)="editFolder(folder)">Editar
-                  </button>
                 </div>
               </mat-list-item>            
             </mat-list>
