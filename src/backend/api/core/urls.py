@@ -1,12 +1,10 @@
 from django.urls import path
-from api.core.apiviews import Persona, ListPersona
+from api.core.apiviews import Producto, ListProducto
 urlpatterns = [
     
-    path('get/Persona/<persona_id>/', Persona.as_view()),
-    path('post/Persona/', Persona.as_view()),
-    path('update/Persona/', Persona.as_view()),
-    path('delete/Persona/<persona_id>/', Persona.as_view()),
-    path('get/list/Persona/', ListPersona.as_view()),
-
-
+    path('get/Producto/<producto_id>/', Producto.as_view()),
+    path('post/Producto/', Producto.as_view()),
+    path('update/Producto/', Producto.as_view()),
+    path('delete/Producto/<producto_id>/', Producto.as_view()),
+    path('get/list/Producto/', ListProducto.as_view()),
 ]

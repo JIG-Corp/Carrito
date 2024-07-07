@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.core.models import Persona
+from apps.core.models import Producto
 
 def index(request):
     template_name = "index.html"

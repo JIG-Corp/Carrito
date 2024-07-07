@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from apps.core.models import Persona
+from apps.core.models import Producto
 
-class PersonaSerializer(serializers.Serializer):
+class ProductoSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     nombre = serializers.CharField() 
-    f_nacimiento=serializers.CharField()
-    ciudad = serializers.CharField()
-    avatar = serializers.FileField()
+    descripcion=serializers.CharField()
+    categoria = serializers.CharField()
+    precio = serializers.FloatField()
     class Meta:
-        model = Persona 
+        model = Producto

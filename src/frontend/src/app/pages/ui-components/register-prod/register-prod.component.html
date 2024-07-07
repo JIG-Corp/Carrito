@@ -1,9 +1,8 @@
-<div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
-    <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
+<div class="blank-layout-container justify-content-center bg-light-primary">
+    <div class="position-relative row w-100 h-100 bg-gredient">
         <a (click)="addProduct()" mat-flat-button color="primary" class="w-100">
             Agregar Producto
         </a>
-        <div class="example-container mat-elevation-z8">
             <mat-table #table [dataSource]="dataSource">
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
@@ -15,20 +14,21 @@
                     <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="f_nacimiento">
-                    <mat-header-cell *matHeaderCellDef> Fecha de nacimiento </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.f_nacimiento}} </mat-cell>
+                <ng-container matColumnDef="descripcion">
+                    <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="ciudad">
-                    <mat-header-cell *matHeaderCellDef> Ciudad </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.ciudad}} </mat-cell>
+                <ng-container matColumnDef="categoria">
+                    <mat-header-cell *matHeaderCellDef> Categoría </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.categoria}} </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="avatar">
-                    <mat-header-cell *matHeaderCellDef> Avatar </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> <a mat-raised-button href="{{element.avatar}}">Link</a></mat-cell>
+                <ng-container matColumnDef="precio">
+                    <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.precio}} </mat-cell>
                 </ng-container>
+
                 <ng-container matColumnDef="edit">
                     <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
                     <mat-cell *matCellDef="let element">
@@ -36,9 +36,9 @@
                         <button color="accent" mat-raised-button (click)="addProduct()">Eliminar</button>
                     </mat-cell>
                 </ng-container>
+
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
-        </div>
     </div>
 </div>

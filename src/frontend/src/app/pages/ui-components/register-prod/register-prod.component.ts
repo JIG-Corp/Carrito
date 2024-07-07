@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatAnchor} from "@angular/material/button";
 import {MatCard} from "@angular/material/card";
@@ -9,7 +9,7 @@ import {RouterLink} from "@angular/router";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {CurrencyPipe} from "@angular/common";
 import Swal from "sweetalert2";
-import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable} from "@angular/material/table";
+import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableModule} from "@angular/material/table";
 
 @Component({
   selector: 'app-register-prod',
@@ -28,6 +28,7 @@ import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable} from "@angular/m
         MatOption,
         CurrencyPipe,
         MatTable,
+        MatTableModule,
         MatHeaderCell,
         MatCell,
         MatHeaderRow,
@@ -49,8 +50,16 @@ export class RegisterProdComponent {
 
     constructor() {
         this.dataSource = [];
-        this.getPeople();
+        this.getProducts();
     }
+
+    async getProducts() {
+        const result = await fetch(
+      "http://localhost:8000/api/core/get/list/Producto/"
+        );
+        this.dataSource = (await result.json()) as any[];
+    }
+
     async addProduct() {
     type AddProductForm = {
       nombre: string;
@@ -130,7 +139,7 @@ export class RegisterProdComponent {
               nombre: nombreInput.value,
               descripcion: descripcionInput.value,
               categoria: categoriaInput.value,
-              precio : Number(precioInput.value)
+              precio : precioInput.value
             })
           }
         );
@@ -142,7 +151,7 @@ export class RegisterProdComponent {
             icon: "success",
           }).then((ok) => {
             if (ok.value) {
-              this.getPeople();
+              this.getProducts();
             }
           });
         } else {
@@ -155,9 +164,5 @@ export class RegisterProdComponent {
       }
     });
   }
-
-    private getPeople() {
-
-    }
 }
 
