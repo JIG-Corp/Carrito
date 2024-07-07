@@ -1,0 +1,58 @@
+<div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
+    <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
+        <div>
+            <mat-card class="cardWithShadow col-lg-4 d-flex boxed-auth">
+                <form class="m-t-30">
+                    <!-- Nombre producto -->
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">
+                        Nombre de producto
+                    </mat-label>
+                    <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <input matInput />
+                    </mat-form-field>
+
+                    <!-- Descripción -->
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">
+                        Descripción
+                    </mat-label>
+
+                    <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <input matInput />
+                    </mat-form-field>
+
+                    <!-- Categoría -->
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">
+                        Categoría
+                    </mat-label>
+
+                    <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <mat-select placeholder="Seleccione">
+                            <mat-option value="opt1">
+                                Opción 1
+                            </mat-option>
+                            <mat-option value="opt2">
+                                Opción 2
+                            </mat-option>
+                            <mat-option value="opt3">
+                                Opción 3
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <!-- Precio -->
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">
+                        Precio (CLP $)
+                    </mat-label>
+
+                    <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <input matInput type="number" min="1" step="any"/>
+                    </mat-form-field>
+
+                    <a [routerLink]="['/']" mat-flat-button color="primary" class="w-100">
+                        Registrar
+                    </a>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
