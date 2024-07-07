@@ -14,4 +14,9 @@ export const navItems: NavItem[] = [
     iconName: 'check',
     route: '/ui-components/registry',
   },
+  {
+    displayName: 'Registrar Producto',
+    iconName: 'check',
+    route: '/ui-components/registry',
+  },
 ];

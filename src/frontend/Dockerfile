@@ -3,7 +3,7 @@ FROM node:alpine
 
 WORKDIR /angular
 
-COPY . /angular
+ADD . /angular
 
 RUN npm install -g @angular/cli
 

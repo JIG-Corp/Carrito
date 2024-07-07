@@ -9,7 +9,7 @@ export interface Section {
   selector: 'app-lists',
   templateUrl: './lists.component.html',
 })
-export class AppListsComponent {
+export class ControlComponent {
   constructor() {}
 
   typesOfShoes: string[] = ['Loafers', 'Sneakers'];
