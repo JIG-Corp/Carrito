@@ -29,6 +29,11 @@
                     <mat-cell *matCellDef="let element"> {{element.precio}} </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="fecha">
+                    <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="edit">
                     <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
                     <mat-cell *matCellDef="let element">
