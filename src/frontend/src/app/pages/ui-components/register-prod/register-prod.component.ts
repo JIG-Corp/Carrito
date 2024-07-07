@@ -9,6 +9,7 @@ import {RouterLink} from "@angular/router";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {CurrencyPipe} from "@angular/common";
 import Swal from "sweetalert2";
+import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable} from "@angular/material/table";
 
 @Component({
   selector: 'app-register-prod',
@@ -25,12 +26,31 @@ import Swal from "sweetalert2";
         RouterLink,
         MatSelect,
         MatOption,
-        CurrencyPipe
+        CurrencyPipe,
+        MatTable,
+        MatHeaderCell,
+        MatCell,
+        MatHeaderRow,
+        MatRow
     ],
   templateUrl: './register-prod.component.html',
   styleUrl: './register-prod.component.scss'
 })
 export class RegisterProdComponent {
+    displayedColumns = [
+        "id",
+        "nombre",
+        "descripcion",
+        "categoria",
+        "precio",
+        "edit",
+    ];
+    dataSource: any[];
+
+    constructor() {
+        this.dataSource = [];
+        this.getPeople();
+    }
     async addProduct() {
     type AddProductForm = {
       nombre: string;
@@ -90,13 +110,16 @@ export class RegisterProdComponent {
         if (!nombre || !descripcion || !categoria || !precio)  {
           Swal.showValidationMessage(`Por favor rellene los campos`);
         }
+        else if (isNaN(Number(precio))) {
+            Swal.showValidationMessage('Precio tiene que ser un número')
+        }
         return { nombre, descripcion, categoria, precio };
       },
     }).then(async (result) => {
       if(result.value){
 
         const response = await fetch(
-          `http://localhost:8000/api/core/post/Persona/`,
+          `http://localhost:8000/api/core/post/Producto/`,
           {
             method: "POST",
             headers: {
@@ -107,7 +130,7 @@ export class RegisterProdComponent {
               nombre: nombreInput.value,
               descripcion: descripcionInput.value,
               categoria: categoriaInput.value,
-              precio : precioInput.value
+              precio : Number(precioInput.value)
             })
           }
         );
